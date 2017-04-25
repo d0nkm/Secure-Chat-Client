@@ -1,0 +1,21 @@
+div(flex layout="column" layout-padding)
+  div(flex layout="column" layout-align="center center" ng-hide="recipient.history.length")
+    md-progress-circular
+    p Establishing a secure connection...
+  md-content(flex scroll-glue ng-show="recipient.history.length")
+    md-list(scroll-glue-anchor)
+      md-subheader Chatting with&nbsp;
+        span(md-colors="{color:'primary'}") {{ recipient.name }}
+      md-list-item(ng-repeat="entry in recipient.history" ng-switch="entry.type")
+        .md-list-item-text(flex="100" layout="row" layout-align="start start" ng-switch-when="msg")
+          b {{ (entry.sent) ? "You" : recipient.name }}:&nbsp;
+          div(flex style="word-wrap: break-word;") {{ entry.content }}
+          p.md-caption(style="opacity: .54;") {{ entry.time.toLocaleTimeString() }}
+        .md-list-item-text(flex ng-switch-when="started") Chat with {{ recipient.name }} started
+        .md-list-item-text(flex ng-switch-default) Unknown history entry
+  form(flex="initial" layout="row" layout-align="center center" ng-submit="sendMessage()"  ng-show="recipient.history.length")
+    md-input-container(flex)
+      label Message
+      input(type="text" ng-model="message.content")
+    div(layout="column" layout-align="center center")
+      md-button.md-accent.md-raised(flex="initial" type="submit") Send

@@ -1,0 +1,12 @@
+md-dialog(aria-label="Settings")
+  md-toolbar
+    .md-toolbar-tools
+      h2(ng-truncate) Your public key
+      span(flex)
+      md-button.md-icon-button(ng-click="hide()")
+        md-icon.fa(md-font-icon="fa-times")
+  md-dialog-content
+    md-content.md-dialog-content
+      pre {{ pem }}
+  md-dialog-actions(layout="row")
+    md-button(ng-click="hide()" md-primary md-raised) Dismiss

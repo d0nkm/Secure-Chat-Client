@@ -1,0 +1,10 @@
+md-content(flex layout="row" layout-padding layout-align="center start")
+  div(flex="75")
+    form(name="keyForm" ng-submit="probe()")
+      md-input-container.md-block
+        label Recipient public key
+        textarea.key(rows="9" ng-model="recipient.pubkey" md-select-on-focus)
+      div(flex layout="row" layout-align="end center" layout-padding)
+        md-progress-circular(md-mode="indeterminate" ng-show="prober.probing" md-diameter="18px")
+        span(ng-show="prober.errMsg" md-colors="{color:'warn'}") {{ prober.errMsg }}
+        md-button.md-raised.md-primary(type="submit" ng-disabled="prober.probing") Start chat

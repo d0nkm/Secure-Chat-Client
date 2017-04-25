@@ -1,0 +1,28 @@
+doctype
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href='//static.catafratta.org/css/roboto-34574i.css')
+    link(rel='stylesheet' href='//static.catafratta.org/css/angular-material.min.css')
+    link(rel='stylesheet' href='font-awesome.min.css')
+    link(rel='stylesheet' href='style.css')
+    title Secure Chat
+  body.view-animate-container(ng-app='SecureChat' ng-cloak ng-controller="AppController")
+    div(layout="row" layout-align="space-around" ng-show="sc.loading")
+      div(layout="column" layout-align="center center")
+        md-progress-circular(md-mode="indeterminate")
+        p {{ sc.loadingMessage || "Loading&hellip;" }}
+    .view-animate(ui-view flex layout="row" style="height: 100%;" ng-hide="sc.loading")
+    script(src='//static.catafratta.org/js/jquery.min.js')
+    script(src='//static.catafratta.org/js/angular.min.js')
+    script(src='//static.catafratta.org/js/angular-animate.min.js')
+    script(src='//static.catafratta.org/js/angular-ui-router.min.js')
+    script(src='//static.catafratta.org/js/angular-aria.min.js')
+    script(src='//static.catafratta.org/js/angular-messages.min.js')
+    script(src='//static.catafratta.org/js/angular-material.min.js')
+    script(src='//static.catafratta.org/js/kotlin-1.1.1.js')
+    script(src='scrollglue.min.js')
+    script(src='socket.io/socket.io.js')
+    script(src='forge.min.js')
+    script(src='nschat_main.js')
